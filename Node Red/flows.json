@@ -1,0 +1,450 @@
+[
+    {
+        "id": "1f5408bcd5c8bba5",
+        "type": "tab",
+        "label": "Front End",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8fe8054d783a2fa0",
+        "type": "http in",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Temp Hum",
+        "url": "/Teste",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 300,
+        "wires": [
+            [
+                "9c13b2dfcd81e3f2"
+            ]
+        ]
+    },
+    {
+        "id": "c2b67086c649a067",
+        "type": "http response",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Return",
+        "statusCode": "",
+        "headers": {},
+        "x": 650,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "34ade2959b4b4805",
+        "type": "function",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Format Payload",
+        "func": "var request = msg.payload.status\nmsg.payload = request\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "405472a6b4fa39c8",
+                "c2b67086c649a067"
+            ]
+        ]
+    },
+    {
+        "id": "0aaed4dc32be6aef",
+        "type": "http in",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Button Vent",
+        "url": "/ButtonVent",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 180,
+        "wires": [
+            [
+                "34ade2959b4b4805"
+            ]
+        ]
+    },
+    {
+        "id": "b7cca97bdfa9a725",
+        "type": "http in",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Slider Vent",
+        "url": "/SliderVent",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 240,
+        "wires": [
+            [
+                "f1a4006599f56d9b"
+            ]
+        ]
+    },
+    {
+        "id": "f1a4006599f56d9b",
+        "type": "function",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Format Payload",
+        "func": "var request = msg.payload.slider\nmsg.payload = request\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 240,
+        "wires": [
+            [
+                "84dc2bdc8e9be2ed",
+                "c2b67086c649a067"
+            ]
+        ]
+    },
+    {
+        "id": "7021951a4a652cb8",
+        "type": "http in",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Button Lamp",
+        "url": "/ButtonLamp",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "c6fd98277e211218"
+            ]
+        ]
+    },
+    {
+        "id": "b5d53e5b577352c9",
+        "type": "http in",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Slider Lamp",
+        "url": "/SliderLamp",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "7613030ad46a3bd0"
+            ]
+        ]
+    },
+    {
+        "id": "c6fd98277e211218",
+        "type": "function",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Format Payload",
+        "func": "var request = msg.payload.status\nmsg.payload = request\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 60,
+        "wires": [
+            [
+                "76ae13073b95297d",
+                "c2b67086c649a067"
+            ]
+        ]
+    },
+    {
+        "id": "7613030ad46a3bd0",
+        "type": "function",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Format Payload",
+        "func": "var request = msg.payload.slider\nmsg.payload = request\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "bd0acd43e54a0293",
+                "c2b67086c649a067"
+            ]
+        ]
+    },
+    {
+        "id": "405472a6b4fa39c8",
+        "type": "mqtt out",
+        "z": "1f5408bcd5c8bba5",
+        "name": "",
+        "topic": "IFSP/IoT/swVent",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "bcb1ecd13beb0ecc",
+        "x": 690,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "84dc2bdc8e9be2ed",
+        "type": "mqtt out",
+        "z": "1f5408bcd5c8bba5",
+        "name": "",
+        "topic": "IFSP/IoT/vrVent",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "bcb1ecd13beb0ecc",
+        "x": 680,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "76ae13073b95297d",
+        "type": "mqtt out",
+        "z": "1f5408bcd5c8bba5",
+        "name": "",
+        "topic": "IFSP/IoT/swLamp",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "bcb1ecd13beb0ecc",
+        "x": 690,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "bd0acd43e54a0293",
+        "type": "mqtt out",
+        "z": "1f5408bcd5c8bba5",
+        "name": "",
+        "topic": "IFSP/IoT/vrLamp",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "bcb1ecd13beb0ecc",
+        "x": 690,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b5ded1f570c10ad5",
+        "type": "mqtt in",
+        "z": "1f5408bcd5c8bba5",
+        "name": "",
+        "topic": "IFSP/IoT/return",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "bcb1ecd13beb0ecc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 360,
+        "wires": [
+            [
+                "4b6ac11db18e262a"
+            ]
+        ]
+    },
+    {
+        "id": "9013e45090376d85",
+        "type": "csv",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Separate",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "temp,hum",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 580,
+        "y": 360,
+        "wires": [
+            [
+                "e969ec7e2671af96"
+            ]
+        ]
+    },
+    {
+        "id": "4b6ac11db18e262a",
+        "type": "string",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Format",
+        "methods": [
+            {
+                "name": "replaceAll",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "{"
+                    },
+                    {
+                        "type": "str",
+                        "value": ""
+                    }
+                ]
+            },
+            {
+                "name": "replaceAll",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "}"
+                    },
+                    {
+                        "type": "str",
+                        "value": ""
+                    }
+                ]
+            }
+        ],
+        "prop": "payload",
+        "propout": "payload",
+        "object": "msg",
+        "objectout": "msg",
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "9013e45090376d85"
+            ]
+        ]
+    },
+    {
+        "id": "e969ec7e2671af96",
+        "type": "function",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Save Temp. Hum.",
+        "func": "const temperatura = msg.payload.temp\nconst humidade = msg.payload.hum\nglobal.set(\"temperatura\", temperatura)\nglobal.set(\"humidade\", humidade)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c13b2dfcd81e3f2",
+        "type": "function",
+        "z": "1f5408bcd5c8bba5",
+        "name": "Format Payload",
+        "func": "var temperatura = global.get(\"temperatura\")\nvar humidade = global.get(\"humidade\")\n\nmsg.payload = {}\nmsg.payload.temp = temperatura\nmsg.payload.hum = humidade\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "c2b67086c649a067"
+            ]
+        ]
+    },
+    {
+        "id": "9b75aa08a0c3b18f",
+        "type": "comment",
+        "z": "1f5408bcd5c8bba5",
+        "name": "HTTP IN",
+        "info": " ",
+        "x": 80,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "92a3957c37e6fab9",
+        "type": "comment",
+        "z": "1f5408bcd5c8bba5",
+        "name": "MQTT OUT",
+        "info": " ",
+        "x": 890,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b866d8a89cd7450e",
+        "type": "comment",
+        "z": "1f5408bcd5c8bba5",
+        "name": "HTTP Out",
+        "info": " ",
+        "x": 780,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "5f5359872d427540",
+        "type": "comment",
+        "z": "1f5408bcd5c8bba5",
+        "name": "MQTT IN",
+        "info": " ",
+        "x": 80,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "bcb1ecd13beb0ecc",
+        "type": "mqtt-broker",
+        "name": "Broker AWS",
+        "broker": "ec2-18-232-142-217.compute-1.amazonaws.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
